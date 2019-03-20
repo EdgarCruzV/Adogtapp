@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/layout_adoptar"
+              android:icon="@drawable/ic_adopta"
+              android:title="Adopta"/>
+        <item android:id="@+id/layout_tienda"
+              android:icon="@drawable/ic_tienda"
+              android:title="Tienda"/>
+        <item android:id="@+id/layout_informacion"
+              android:icon="@drawable/ic_contacto"
+              android:title="Contacto"/>
+        <item android:id="@+id/layout_paseador"
+              android:icon="@drawable/ic_paseador"
+              android:title="Paseadores"/>
+        <item android:id="@+id/layout_login"
+              android:icon="@drawable/ic_login"
+              android:title="Log in"/>
+    </group>
+</menu>
