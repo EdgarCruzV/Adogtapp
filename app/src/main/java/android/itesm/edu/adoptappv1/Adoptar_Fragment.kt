@@ -1,12 +1,19 @@
 package android.itesm.edu.adoptappv1
 
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import kotlinx.android.synthetic.main.nav_header.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -37,11 +44,13 @@ class Adoptar_Fragment : Fragment() {
         }
     }
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.adoptar_fragment, container, false)
     }
 
@@ -92,4 +101,24 @@ class Adoptar_Fragment : Fragment() {
                 }
             }
     }
+
 }
+
+//Descargar imagen
+/*
+File localFile = File.createTempFile("images", "jpg");
+riversRef.getFile(localFile)
+.addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+    @Override
+    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+        // Successfully downloaded data to local file
+        // ...
+    }
+}).addOnFailureListener(new OnFailureListener() {
+    @Override
+    public void onFailure(@NonNull Exception exception) {
+        // Handle failed download
+        // ...
+    }
+});
+*/
