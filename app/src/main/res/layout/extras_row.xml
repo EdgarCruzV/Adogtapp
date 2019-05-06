@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+<de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/foto_extra"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:ignore="MissingConstraints"/>
+
+    <TextView
+            android:id="@+id/nombre_extra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="32sp"
+            android:textColor="@color/white"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintTop_toTopOf="@+id/foto_extra"
+            tools:text="ALEX"
+            app:layout_constraintLeft_toRightOf="@+id/foto_extra"
+            tools:textColor="@color/blueboy"
+            tools:ignore="MissingConstraints"/>
+
+
+
+    <TextView
+            android:id="@+id/marca_extra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="12dp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@+id/nombre_extra"
+            tools:text="Paseos de taxqueña"
+            app:layout_constraintLeft_toRightOf="@+id/foto_extra"
+            android:paddingLeft="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"/>
+
+    <TextView
+            android:id="@+id/precio_extra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="12dp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@+id/marca_extra"
+            tools:text="Paseos de taxqueña"
+            app:layout_constraintLeft_toRightOf="@+id/pesos_extra"
+            android:paddingLeft="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            />
+
+    <TextView
+            android:id="@+id/pesos_extra"
+            android:text="$"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="12dp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@+id/marca_extra"
+            tools:text="Paseos de taxqueña"
+            app:layout_constraintLeft_toRightOf="@+id/foto_extra"
+            android:paddingLeft="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"/>
+
+    <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/oferta_extra"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_stars_black_24dp"
+app:layout_constraintTop_toTopOf="@+id/foto_extra"
+            app:layout_constraintLeft_toLeftOf="@+id/foto_extra"
+            tools:layout_editor_absoluteY="16dp"
+            tools:layout_editor_absoluteX="16dp"/>
+</android.support.constraint.ConstraintLayout>

@@ -1,19 +1,17 @@
-package android.itesm.edu.adoptappv1
+package android.itesm.edu.adoptappv1.model.Adoptar
 
-import android.content.Context
-import android.content.Intent
+import android.itesm.edu.adoptappv1.R
+import android.itesm.edu.adoptappv1.model.Extras.Carrito
+import android.itesm.edu.adoptappv1.model.Paseadores.Paseadores
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import com.bumptech.glide.Glide
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import kotlinx.android.synthetic.main.nav_header.*
+import kotlinx.android.synthetic.main.adoptar_fragment.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -59,7 +57,54 @@ class Adoptar_Fragment : Fragment() {
         listener?.onFragmentInteraction(uri)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+        val perritos = arrayListOf<Perrito>()
+
+        for (i in 0..5) {
+            perritos.add(
+                Perrito(
+                    "Calceta",
+                    true,
+                    "3 meses",
+                    "mediana",
+                    "Huellitas de acero",
+                    "soy calceta adoptame soy muy juguetona",
+                    "https://firebasestorage.googleapis.com/v0/b/adogtapp-4fe6a.appspot.com/o/Perritos%2FP1.jpeg?alt=media&token=e8487ff2-12f4-4b7a-b962-d58e576743c9"
+                )
+            )
+            perritos.add(
+                Perrito(
+                    "Choco",
+                    false,
+                    "9 meses",
+                    "grande",
+                    "Huellitas de acero",
+                    "soy Choco adoptame soy muy jugueton",
+                    "https://firebasestorage.googleapis.com/v0/b/adogtapp-4fe6a.appspot.com/o/Perritos%2FP3.jpeg?alt=media&token=1bcda912-7a5e-4ff9-b557-bc7df3f4f585"
+                )
+            )
+            perritos.add(
+                Perrito(
+                    "lily",
+                    true,
+                    "4 meses",
+                    "mediana",
+                    "Huellitas de acero",
+                    "soy Lily adoptame soy muy juguetona",
+                    "https://firebasestorage.googleapis.com/v0/b/adogtapp-4fe6a.appspot.com/o/Perritos%2FP2.jpeg?alt=media&token=d0f53b43-1e96-4526-bdba-ff642d2047fb"
+                )
+            )
+        }
+
+        val ProductosCarrito = arrayListOf<Carrito>()
+
+            recycler_adoptar.layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
+            recycler_adoptar.adapter= PerritosAdapter(perritos)
+
+
+    }
 
     override fun onDetach() {
         super.onDetach()
@@ -103,22 +148,3 @@ class Adoptar_Fragment : Fragment() {
     }
 
 }
-
-//Descargar imagen
-/*
-File localFile = File.createTempFile("images", "jpg");
-riversRef.getFile(localFile)
-.addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-    @Override
-    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-        // Successfully downloaded data to local file
-        // ...
-    }
-}).addOnFailureListener(new OnFailureListener() {
-    @Override
-    public void onFailure(@NonNull Exception exception) {
-        // Handle failed download
-        // ...
-    }
-});
-*/

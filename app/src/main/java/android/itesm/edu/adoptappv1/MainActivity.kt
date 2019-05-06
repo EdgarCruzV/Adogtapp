@@ -1,6 +1,12 @@
 package android.itesm.edu.adoptappv1
 
 import android.content.Intent
+import android.itesm.edu.adoptappv1.model.Adoptar.Adoptar_Fragment
+import android.itesm.edu.adoptappv1.model.Carrito.CarritoActivity
+import android.itesm.edu.adoptappv1.model.Comida.Comida_Fragment
+import android.itesm.edu.adoptappv1.model.Contacto.Informacion_Fragment
+import android.itesm.edu.adoptappv1.model.Extras.Extras_Fragment
+import android.itesm.edu.adoptappv1.model.Paseadores.Paseadores_Fragment
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.NavigationView
@@ -9,22 +15,17 @@ import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.nav_header.*
 import kotlinx.android.synthetic.main.nav_header.view.*
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.DatabaseReference
-
 
 
 class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatActivity() {
@@ -38,33 +39,53 @@ class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatA
                 Toast.makeText(this, "Adopta", Toast.LENGTH_SHORT).show()
 
             }
-            R.id.layout_tienda -> {
-                drawer.closeDrawers()
-                val tiendaFragment = Tienda_Fragment.newInstance()
-                supportFragmentManager.beginTransaction().replace(R.id.fragment_container, tiendaFragment).commit();
-                Toast.makeText(this, "Tienda", Toast.LENGTH_SHORT).show()
 
-            }
             R.id.layout_informacion -> {
                 drawer.closeDrawers()
                 val informacionFragment = Informacion_Fragment.newInstance()
-                supportFragmentManager.beginTransaction().replace(R.id.fragment_container, informacionFragment).commit();
+                supportFragmentManager.beginTransaction().replace(R.id.fragment_container, informacionFragment)
+                    .commit();
                 Toast.makeText(this, "Contacto", Toast.LENGTH_SHORT).show()
 
             }
             R.id.layout_paseador -> {
                 drawer.closeDrawers()
-                //val adoptarFragment = Adoptar_Fragment.newInstance()
-                //supportFragmentManager.beginTransaction().replace(R.id.fragment_container, adoptarFragment).commit();
-                Toast.makeText(this, "Paseador", Toast.LENGTH_SHORT).show()
+                val paseadoresFragment = Paseadores_Fragment.newInstance()
+                supportFragmentManager.beginTransaction().replace(R.id.fragment_container, paseadoresFragment).commit();
+                Toast.makeText(this, "Paseadores", Toast.LENGTH_SHORT).show()
 
             }
-            R.id.layout_login -> {
+
+            R.id.layout_comida -> {
+                drawer.closeDrawers()
+                val tiendaFragment = Comida_Fragment.newInstance()
+                supportFragmentManager.beginTransaction().replace(R.id.fragment_container, tiendaFragment).commit();
+                Toast.makeText(this, "Comida", Toast.LENGTH_SHORT).show()
+
+            }
+
+            R.id.layout_extra -> {
+                drawer.closeDrawers()
+                val tiendaFragment = Extras_Fragment.newInstance()
+                supportFragmentManager.beginTransaction().replace(R.id.fragment_container, tiendaFragment).commit();
+                Toast.makeText(this, "Extras", Toast.LENGTH_SHORT).show()
+
+            }
+
+            R.id.layout_donar -> {
                 drawer.closeDrawers()
                 //val adoptarFragment = Adoptar_Fragment.newInstance()
                 //supportFragmentManager.beginTransaction().replace(R.id.fragment_container, adoptarFragment).commit();
-                Toast.makeText(this, "Login", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Donar", Toast.LENGTH_SHORT).show()
             }
+
+            R.id.layout_tienda -> {
+                drawer.closeDrawers()
+                Toast.makeText(this, "Checkaout", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, CarritoActivity::class.java))
+                return true
+            }
+
         }
         return true
     }
@@ -81,7 +102,7 @@ class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatA
         setSupportActionBar(findViewById(R.id.toolbar))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         drawer = findViewById<DrawerLayout>(R.id.drawer_layout)
-        var navigationView : NavigationView = findViewById(R.id.nav_view);
+        var navigationView: NavigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this)
         val toggle = ActionBarDrawerToggle(
             this,
@@ -110,9 +131,10 @@ class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatA
         menuInflater.inflate(R.menu.main_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
+
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when(item?.itemId){
-            R.id.log_out ->{
+        when (item?.itemId) {
+            R.id.log_out -> {
                 FirebaseAuth.getInstance().signOut()
                 val intent = Intent(this, RegisterActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -122,7 +144,6 @@ class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatA
         }
         return super.onOptionsItemSelected(item)
     }
-
 
 
     private fun checkUserLogged() {
@@ -136,15 +157,15 @@ class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatA
 
     private fun loadUserInformation() {
         val mAuth: FirebaseAuth = FirebaseAuth.getInstance()
-        var user : FirebaseUser? = mAuth.getCurrentUser()
+        var user: FirebaseUser? = mAuth.getCurrentUser()
         _db = FirebaseDatabase.getInstance().getReference("/users")
 
 
-        if(user != null){
-            if(user!!.uid != null){
+        if (user != null) {
+            if (user!!.uid != null) {
                 uid = user!!.uid
             }
-            if(user!!.email != null){
+            if (user!!.email != null) {
                 //var displayName : String = user!!.getDisplayName()!!
                 nav_view.getHeaderView(0).mail_text.text = user!!.email
             }
@@ -152,13 +173,13 @@ class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatA
             ref.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     // Code
-                    val userName  = dataSnapshot.child("users").child(uid).child("username").value.toString()
-                    if(userName != "null"){
+                    val userName = dataSnapshot.child("users").child(uid).child("username").value.toString()
+                    if (userName != "null") {
                         nav_view.getHeaderView(0).name_text.text = userName
                     }
 
-                    val userPhotoUrl  = dataSnapshot.child("users").child(uid).child("profileImageUrl").value.toString()
-                    if(userPhotoUrl != "null"){
+                    val userPhotoUrl = dataSnapshot.child("users").child(uid).child("profileImageUrl").value.toString()
+                    if (userPhotoUrl != "null") {
                         Glide.with(applicationContext)
                             .load(userPhotoUrl)
                             .into(nav_view.getHeaderView(0).profile_pic)
@@ -173,6 +194,7 @@ class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatA
 
     }
 
+
 }
 
 data class User(
@@ -180,3 +202,4 @@ data class User(
     val username: String = "",
     val image: String = ""
 )
+

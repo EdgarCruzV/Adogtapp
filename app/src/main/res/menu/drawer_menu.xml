@@ -8,17 +8,27 @@
         <item android:id="@+id/layout_adoptar"
               android:icon="@drawable/ic_adopta"
               android:title="Adopta"/>
-        <item android:id="@+id/layout_tienda"
-              android:icon="@drawable/ic_tienda"
-              android:title="Tienda"/>
-        <item android:id="@+id/layout_informacion"
-              android:icon="@drawable/ic_contacto"
-              android:title="Contacto"/>
+
         <item android:id="@+id/layout_paseador"
               android:icon="@drawable/ic_paseador"
               android:title="Paseadores"/>
-        <item android:id="@+id/layout_login"
-              android:icon="@drawable/ic_login"
-              android:title="Log in"/>
+        <item android:title="____________________________________"/>
+        <item android:id="@+id/layout_comida"
+              android:icon="@drawable/food"
+              android:title="Comida"/>
+        <item android:id="@+id/layout_extra"
+              android:icon="@drawable/ball"
+              android:title="Extras"/>
+        <item android:id="@+id/layout_donar"
+              android:icon="@drawable/ic_heart_foreground"
+              android:title="Donar"/>
+        <item android:id="@+id/layout_tienda"
+              android:icon="@drawable/ic_tienda"
+              android:title="Checkout"/>
+        <item android:title="____________________________________"/>
+        <item android:id="@+id/layout_informacion"
+              android:icon="@drawable/ic_contacto"
+              android:title="Contacto"/>
+
     </group>
 </menu>

@@ -1,12 +1,14 @@
-package android.itesm.edu.adoptappv1
+package android.itesm.edu.adoptappv1.model.Contacto
 
-import android.content.Context
+import android.content.Intent
+import android.itesm.edu.adoptappv1.R
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.informacion_fragment.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -35,7 +37,34 @@ class Informacion_Fragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        facebook_imageButton.setOnClickListener {
+            val i= Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/Adogtapp-456828638476933/?modal=admin_todo_tour&notif_id=1556900686703830&notif_t=page_invite"))
+            startActivity(i)
+        }
+
+        instagram_imageButton.setOnClickListener {
+            val i= Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/pinkpigletpuppy/?hl=es-la"))
+            startActivity(i)
+        }
+
+        instagram_imageButton_huellitas.setOnClickListener {
+            val i= Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/huellitas_de_acero/?hl=es-la"))
+            startActivity(i)
+        }
+
+        facebook_imageButton_huellitas.setOnClickListener {
+            val i= Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/HuellitasDeAcero/"))
+            startActivity(i)
+        }
+
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,10 +74,8 @@ class Informacion_Fragment : Fragment() {
         return inflater.inflate(R.layout.informacion_fragment, container, false)
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    fun onButtonPressed(uri: Uri) {
-        listener?.onFragmentInteraction(uri)
-    }
+
+
 
 
 

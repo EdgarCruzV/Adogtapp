@@ -11,6 +11,7 @@
     <color name="orange">#FF8000</color>
     <color name="white">#FFFFFF</color>
     <color name="grey">#0E2F44</color>
+    <color name="black">#000000</color>
     <color name="cuteSamBlue">#0099CC</color>
 
 </resources>

@@ -4,6 +4,7 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 28
@@ -13,6 +14,7 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -39,7 +41,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation files('libs/CircleImageView-master/gradle/wrapper/gradle-wrapper.jar')
-    implementation 'de.hdodenhof:circleimageview:2.0.0'
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
 
     //Firebase
     implementation 'com.google.firebase:firebase-database:16.1.0'
@@ -47,9 +49,23 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage:16.1.0'
 
     implementation 'com.google.firebase:firebase-auth:16.2.1'
-    implementation 'com.google.android.gms:play-services-basement:15.0.1'
+    implementation 'com.google.android.gms:play-services-basement:16.2.0'
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.android.support:multidex:1.0.3'
+
+
+    //fotitos de Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //Background run
+    implementation "org.jetbrains.anko:anko:0.10.8"
+
+    //Persistent Room
+    //implementation "androidx.room:room-runtime:2.1.0-alpha07"
+    //kapt "androidx.room:room-compiler:2.1.0-alpha07"
 
 }
 
