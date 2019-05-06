@@ -79,7 +79,7 @@ class Comida_Fragment : Fragment() {
         //AQUI ESTA LA LISTA
         for (i in 0..5) {
             comidas.add(
-                Comida("Nupec adulto",false,"Nupec","1500","Soy comida","https://firebasestorage.googleapis.com/v0/b/adogtapp-4fe6a.appspot.com/o/comida%2FNupecAdulto.jpg?alt=media&token=5855d327-f342-46c8-a941-1c1ee8774790")
+                Comida("Nupec adulto",false,"Nupec","1","Soy comida","https://firebasestorage.googleapis.com/v0/b/adogtapp-4fe6a.appspot.com/o/comida%2FNupecAdulto.jpg?alt=media&token=5855d327-f342-46c8-a941-1c1ee8774790")
             )
             comidas.add(
                 Comida("Algo que no es Nupec",false,"Nupec","1500","Soy comida","https://firebasestorage.googleapis.com/v0/b/adogtapp-4fe6a.appspot.com/o/comida%2FNupecAdulto.jpg?alt=media&token=5855d327-f342-46c8-a941-1c1ee8774790")

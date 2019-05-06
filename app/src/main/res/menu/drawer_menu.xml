@@ -6,18 +6,18 @@
 
     <group android:checkableBehavior="single">
         <item android:id="@+id/layout_adoptar"
-              android:icon="@drawable/ic_adopta"
+              android:icon="@drawable/huella"
               android:title="Adopta"/>
 
         <item android:id="@+id/layout_paseador"
-              android:icon="@drawable/ic_paseador"
+              android:icon="@drawable/carreola"
               android:title="Paseadores"/>
         <item android:title="____________________________________"/>
         <item android:id="@+id/layout_comida"
-              android:icon="@drawable/food"
+              android:icon="@drawable/restaurant"
               android:title="Comida"/>
         <item android:id="@+id/layout_extra"
-              android:icon="@drawable/ball"
+              android:icon="@drawable/extras"
               android:title="Extras"/>
         <item android:id="@+id/layout_donar"
               android:icon="@drawable/ic_heart_foreground"

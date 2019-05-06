@@ -10,11 +10,12 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "android.itesm.edu.adoptappv1"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
+        android.defaultConfig.vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -56,16 +57,18 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.android.support:multidex:1.0.3'
 
-
     //fotitos de Picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
 
     //Background run
     implementation "org.jetbrains.anko:anko:0.10.8"
+    //PayPal
+    implementation 'com.paypal.sdk:paypal-android-sdk:2.14.2'
 
     //Persistent Room
     //implementation "androidx.room:room-runtime:2.1.0-alpha07"
     //kapt "androidx.room:room-compiler:2.1.0-alpha07"
+
 
 }
 
