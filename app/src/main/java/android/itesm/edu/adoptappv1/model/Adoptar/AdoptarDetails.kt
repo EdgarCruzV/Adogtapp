@@ -9,6 +9,7 @@ import kotlinx.android.synthetic.main.adoptar_details.*
 import android.content.Intent
 import android.net.Uri
 import android.widget.Toast
+import kotlinx.android.synthetic.main.perrito_row.*
 
 
 class AdoptarDetails (): AppCompatActivity() {
@@ -33,12 +34,12 @@ class AdoptarDetails (): AppCompatActivity() {
 
         button30.setOnClickListener {
             AlertDialog.Builder(this)
-                .setMessage("Recuerda que un perrito es un amigo para toda la vida y una gran responsabilidad, ¿prometes cuidar de tu familia?")
+                .setMessage("Recuerda que un perrito es un amigo para toda la vida y una gran responsabilidad, ¿Prometes cuidar de tu familia?")
                 .setPositiveButton("¡Lo prometo!", object : DialogInterface.OnClickListener {
                     override fun onClick(dialog: DialogInterface?, which: Int) {
-                        val recipient = "prueba@gmail.mx".trim()
-                        val subject = "pueba de correo".trim()
-                        val message = "Hola estoy probando mi correo".trim()
+                        val recipient = "adogtapp.services@gmail.com".trim()
+                        val subject = "Solicitud de Adopción de $nombre".trim()
+                        val message = "Hola, estoy interesad@ en adoptar a $nombre.".trim()
 
 
                          fun sendEmail(recipient: String, subject: String, message: String) {

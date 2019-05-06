@@ -70,7 +70,7 @@ class Adoptar_Fragment : Fragment() {
                     "3 meses",
                     "mediana",
                     "Huellitas de acero",
-                    "soy calceta adoptame soy muy juguetona",
+                    "soy calceta adóptame soy muy juguetona",
                     "https://firebasestorage.googleapis.com/v0/b/adogtapp-4fe6a.appspot.com/o/Perritos%2FP1.jpeg?alt=media&token=e8487ff2-12f4-4b7a-b962-d58e576743c9"
                 )
             )
@@ -81,7 +81,7 @@ class Adoptar_Fragment : Fragment() {
                     "9 meses",
                     "grande",
                     "Huellitas de acero",
-                    "soy Choco adoptame soy muy jugueton",
+                    "soy Choco adóptame soy muy jugueton",
                     "https://firebasestorage.googleapis.com/v0/b/adogtapp-4fe6a.appspot.com/o/Perritos%2FP3.jpeg?alt=media&token=1bcda912-7a5e-4ff9-b557-bc7df3f4f585"
                 )
             )
@@ -92,7 +92,7 @@ class Adoptar_Fragment : Fragment() {
                     "4 meses",
                     "mediana",
                     "Huellitas de acero",
-                    "soy Lily adoptame soy muy juguetona",
+                    "soy Lily adóptame soy muy juguetona",
                     "https://firebasestorage.googleapis.com/v0/b/adogtapp-4fe6a.appspot.com/o/Perritos%2FP2.jpeg?alt=media&token=d0f53b43-1e96-4526-bdba-ff642d2047fb"
                 )
             )

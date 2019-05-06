@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Adoptapp</string>
+    <string name="app_name">Adogtapp</string>
     <string name="title_activity_tienda">Tienda</string>
     <string name="title_activity_login">Sign in</string>
     <!-- Strings related to login -->

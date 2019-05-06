@@ -2,7 +2,9 @@ package android.itesm.edu.adoptappv1
 
 import android.content.Intent
 import android.itesm.edu.adoptappv1.model.Adoptar.Adoptar_Fragment
+import android.itesm.edu.adoptappv1.Donar
 import android.itesm.edu.adoptappv1.model.Carrito.CarritoActivity
+import android.itesm.edu.adoptappv1.model.Carrito.envio
 import android.itesm.edu.adoptappv1.model.Comida.Comida_Fragment
 import android.itesm.edu.adoptappv1.model.Contacto.Informacion_Fragment
 import android.itesm.edu.adoptappv1.model.Extras.Extras_Fragment
@@ -74,14 +76,14 @@ class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatA
 
             R.id.layout_donar -> {
                 drawer.closeDrawers()
-                //val adoptarFragment = Adoptar_Fragment.newInstance()
-                //supportFragmentManager.beginTransaction().replace(R.id.fragment_container, adoptarFragment).commit();
+                val donarFragment = Donar.newInstance()
+                supportFragmentManager.beginTransaction().replace(R.id.fragment_container, donarFragment).commit();
                 Toast.makeText(this, "Donar", Toast.LENGTH_SHORT).show()
             }
 
             R.id.layout_tienda -> {
                 drawer.closeDrawers()
-                Toast.makeText(this, "Checkaout", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Checkout", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, CarritoActivity::class.java))
                 return true
             }
@@ -97,6 +99,10 @@ class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatA
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val bundle: Bundle? = intent.extras
+        val intentString: String? = intent.getStringExtra("Pagado")
+        val myArray: ArrayList<String>? = intent.getStringArrayListExtra("myArray")
 
         //Para el menu
         setSupportActionBar(findViewById(R.id.toolbar))
@@ -115,8 +121,16 @@ class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatA
         toggle.syncState()
         checkUserLogged()
         loadUserInformation()
-        val fragment = Adoptar_Fragment.newInstance();
-        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).commit()
+        if(intentString == "Pagado"){
+            val envioFragment = envio.newInstance()
+            supportFragmentManager.beginTransaction().replace(R.id.fragment_container, envioFragment).commit();
+            Toast.makeText(this, "Información de envío", Toast.LENGTH_SHORT).show()
+
+        }else{
+            val fragment = Adoptar_Fragment.newInstance();
+            supportFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).commit()
+        }
+
     }
 
     override fun onBackPressed() {

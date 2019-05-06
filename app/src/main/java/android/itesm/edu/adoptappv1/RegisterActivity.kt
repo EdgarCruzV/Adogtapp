@@ -95,7 +95,10 @@ class RegisterActivity : AppCompatActivity() {
 
 
     private fun uploadImageToFirebaseStorage() {
-        if (selectedPhotoUri == null) return
+        if (selectedPhotoUri == null) {
+            saveClienteToFirebaseDatabase("")
+            return
+        }
 
         val filename = email_edittext.text.toString()
         val ref = FirebaseStorage.getInstance().getReference("/images/$filename")
