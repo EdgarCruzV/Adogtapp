@@ -42,6 +42,43 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:97586460099:android:a7bdd2ed174a7edd",
+        "android_client_info": {
+          "package_name": "itesm.edu.adoptappv1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "97586460099-naep516v1v1c00pirnhigu5k0kn15mgm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "itesm.edu.adoptappv1",
+            "certificate_hash": "b89c9c488b7d4b207c8859b5eda2708955223cd6"
+          }
+        },
+        {
+          "client_id": "97586460099-ao2n4snce520mh30dfl30pglm7p06s65.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwUHgiMZRQS2JTU23kaAcBv2wbe_myFdk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "97586460099-ao2n4snce520mh30dfl30pglm7p06s65.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

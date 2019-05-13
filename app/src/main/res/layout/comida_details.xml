@@ -58,7 +58,7 @@
                 android:padding="8dp"
                 />
         <Button
-                android:text="Button"
+                android:text="Agregar al carrito "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/buttonComida" app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"

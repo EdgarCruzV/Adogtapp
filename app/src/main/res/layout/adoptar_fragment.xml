@@ -13,7 +13,7 @@
 
             android:textSize="50dp"
             android:layout_width="422dp"
-            android:layout_height="91dp"
+            android:layout_height="30dp"
             android:id="@+id/button"
             android:background="@color/purple"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
