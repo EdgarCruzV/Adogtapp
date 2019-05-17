@@ -20,7 +20,14 @@ import java.util.*
 import java.util.stream.IntStream
 import android.R
 import android.util.Log
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import itesm.edu.adoptappv1.model.Comida.Comida
+import itesm.edu.adoptappv1.model.Comida.ComidaAdapter
 import kotlinx.android.synthetic.main.activity_register.*
+import kotlinx.android.synthetic.main.comida_fragment.*
 import kotlinx.android.synthetic.main.extras_fragment.*
 import kotlinx.android.synthetic.main.paseadores_details.*
 
@@ -81,25 +88,44 @@ class Extras_Fragment : Fragment() {
         }
 
 
-        //  ESTE CODIGO VA A MANITA PERO SIRVE
         val extras = arrayListOf<Extra>()
+        val db = FirebaseDatabase.getInstance().getReference()
+
+        db.addValueEventListener(
+
+            object : ValueEventListener {
+
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    for (d in dataSnapshot.child("extras").children) {
+                        val articulo = d.child("articulo").value!!.toString()
+                        val cantidad = d.child("cantidad").value!!.toString()
+                        val foto = d.child("foto").value!!.toString()
+                        val descripcion = d.child("descripcion").value!!.toString()
+                        val marca = d.child("marca").value!!.toString()
+                        val precio = d.child("precio").value!!.toString()
+
+                        extras.add(Extra(articulo,marca,precio,descripcion, foto, cantidad))
+
+                    }
+                    try{
+
+                        recycler_extra.layoutManager=GridLayoutManager(context,1)
+                        recycler_extra.adapter= ExtrasAdapter(extras)
+                    }catch(e:Exception){
+
+                    }
+
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+
+                }
+            }
+        )
 
 
-        //AQUI ESTA LA LISTA
-        //for (i in 0..2) {
-            extras.add(
-                Extra("Aire",false,"Natural","1","es aire que puedes respirar directo a tu casa por solo $1 ",
-                    "https://firebasestorage.googleapis.com/v0/b/adogtapp-4fe6a.appspot.com/o/extras%2Faire.jpg?alt=media&token=111809a3-09fb-4c3c-9cb9-a53475e2ed83")
-            )
 
-
-       // }
-
-        val proveedor = listOf("Pelotas","Correas","Juguetes","Eukanuba","Eukanuba","Eukanuba","Eukanuba","Eukanuba","Eukanuba")
-////////////////////////////////////////////////
-        recycler_extra.layoutManager=GridLayoutManager(context,1)
-        recycler_extra.adapter= ExtrasAdapter(extras)
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         Search_button_extra.setOnClickListener {
 
             val lookforExtras = Search_text_extra.text.toString()
@@ -118,7 +144,6 @@ class Extras_Fragment : Fragment() {
         }
 
         recycler_proveedor_extra.layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
-        recycler_proveedor_extra.adapter= ProveedorAdapter(proveedor)
 
         progressBar_extra.visibility= View.GONE
     }

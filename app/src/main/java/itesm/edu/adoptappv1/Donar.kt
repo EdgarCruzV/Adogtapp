@@ -131,7 +131,7 @@ class Donar : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         donar_button.setOnClickListener {
             amount = cantidad_text.text.toString().toDouble()
-            var payment= PayPalPayment(BigDecimal.valueOf(amount), "MXN", "Adogtapp", PayPalPayment.PAYMENT_INTENT_SALE)
+            var payment= PayPalPayment(BigDecimal.valueOf(amount), "MXN", "Donación Adogtapp", PayPalPayment.PAYMENT_INTENT_SALE)
             var intent = Intent(context, PaymentActivity::class.java)
             intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION,config)
             intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payment)

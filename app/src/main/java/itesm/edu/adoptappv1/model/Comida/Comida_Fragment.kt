@@ -21,9 +21,17 @@ import java.util.stream.IntStream
 import android.R
 import itesm.edu.adoptappv1.model.Comida.ComidaAdapter
 import android.util.Log
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import itesm.edu.adoptappv1.model.Adoptar.Perrito
+import itesm.edu.adoptappv1.model.Adoptar.PerritosAdapter
 import kotlinx.android.synthetic.main.activity_register.*
+import kotlinx.android.synthetic.main.adoptar_fragment.*
 import kotlinx.android.synthetic.main.comida_fragment.*
 import kotlinx.android.synthetic.main.paseadores_details.*
+import kotlinx.android.synthetic.main.paseadores_row.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -65,31 +73,47 @@ class Comida_Fragment : Fragment() {
 
             uiThread {
                 d("alex", "json: $json")
-                //val comidas=Gson().fromJson(json,Array<Comida>::class.java).toString().toList()
-                //Gson gson=new Gson();
-
-
             }
         }
 
-
-        //  ESTE CODIGO VA A MANITA PERO SIRVE
         val comidas = arrayListOf<Comida>()
+        val db = FirebaseDatabase.getInstance().getReference()
+
+        db.addValueEventListener(
+
+            object : ValueEventListener {
+
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    for (d in dataSnapshot.child("tienda").children) {
+                        val articulo = d.child("articulo").value!!.toString()
+                        val cantidad = d.child("cantidad").value!!.toString()
+                        val foto = d.child("foto").value!!.toString()
+                        val descripcion = d.child("descripcion").value!!.toString()
+                        val marca = d.child("marca").value!!.toString()
+                        val precio = d.child("precio").value!!.toString()
+
+                        comidas.add(Comida(articulo,marca,precio,descripcion, foto, cantidad))
+
+                    }
+                    try{
+                        recycler_comida.layoutManager=GridLayoutManager(context,2)
+                        recycler_comida.adapter= ComidaAdapter(comidas)
+                    }catch(e:Exception){
+
+                    }
+
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+
+                }
+            }
+        )
 
 
-        //AQUI ESTA LA LISTA
-        //for (i in 0..5) {
-            comidas.add(
-                Comida("Nupec adulto 20Kg",false,"Nupec","1300","Alimento para adulto marca Nupec de 20Kg","https://firebasestorage.googleapis.com/v0/b/adogtapp-4fe6a.appspot.com/o/comida%2FNupecAdulto.jpg?alt=media&token=5855d327-f342-46c8-a941-1c1ee8774790")
-            )
 
-        //}
 
-        val proveedor = listOf("Nupec","Pedigree","Eukanuba","Eukanuba","Eukanuba","Eukanuba","Eukanuba","Eukanuba","Eukanuba")
-////////////////////////////////////////////////
-        recycler_comida.layoutManager=GridLayoutManager(context,2)
-        recycler_comida.adapter= ComidaAdapter(comidas)
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
         Search_button_comida.setOnClickListener {
             val lookfor_comida = Search_text_comida.text.toString()
             val comidabuscada = arrayListOf<Comida>()
@@ -107,7 +131,6 @@ class Comida_Fragment : Fragment() {
         }
 
         recycler_proveedor_comida.layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
-        recycler_proveedor_comida.adapter= ProveedorAdapter(proveedor)
 
         progressBar_comida.visibility= View.GONE
     }

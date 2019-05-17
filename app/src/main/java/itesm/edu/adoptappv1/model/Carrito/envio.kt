@@ -1,10 +1,12 @@
 package itesm.edu.adoptappv1.model.Carrito
 
+import android.content.Context
 import android.content.Intent
 import itesm.edu.adoptappv1.MainActivity
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +16,8 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
+import itesm.edu.adoptappv1.model.Adoptar.Adoptar_Fragment
+import itesm.edu.adoptappv1.model.Comida.ComidaDetailsFragment
 import kotlinx.android.synthetic.main.fragment_envio.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -21,6 +25,7 @@ import kotlinx.android.synthetic.main.fragment_envio.*
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
+private lateinit var mContext: Context
 /**
  * A simple [Fragment] subclass.
  * Activities that contain this fragment must implement the
@@ -51,6 +56,7 @@ class envio : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        mContext = container!!.getContext()
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_envio, container, false)
     }
@@ -104,8 +110,11 @@ class envio : Fragment() {
                 })
             }
             Toast.makeText(context, "Información Enviada", Toast.LENGTH_SHORT).show()
-            val intent = Intent(context, MainActivity::class.java)
-            startActivity(intent)
+            val adoptarFragment = Adoptar_Fragment.newInstance()
+            (mContext as FragmentActivity).supportFragmentManager.beginTransaction()
+                .replace(itesm.edu.adoptappv1.R.id.fragment_container, adoptarFragment)
+                .addToBackStack(null)
+                .commit()
 
         }
     }

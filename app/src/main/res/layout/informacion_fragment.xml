@@ -10,7 +10,6 @@
 
 
     <ImageButton
-            android:src="@drawable/facebook_logos"
             app:layout_constraintTop_toBottomOf="@id/textView"
             android:layout_marginTop="50dp"
             android:background="@color/grey"
@@ -20,37 +19,36 @@
             android:id="@+id/facebook_imageButton"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginLeft="40dp"
-            android:layout_marginRight="120dp"
+            android:layout_marginRight="112dp"
             app:layout_constraintLeft_toRightOf="@+id/instagram_imageButton"
-            />
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="@+id/instagram_imageButton"
+            android:layout_marginEnd="112dp" app:layout_constraintVertical_bias="0.0"/>
 
     <ImageButton
-            android:src="@drawable/facebook_logos"
             app:layout_constraintTop_toBottomOf="@id/infoHuellitas"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="8dp"
             android:background="@color/grey"
             android:scaleType="fitCenter"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:id="@+id/facebook_imageButton_huellitas"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            app:layout_constraintLeft_toRightOf="@+id/instagram_imageButton"
-    />
+            android:layout_marginRight="48dp"
+            android:layout_marginEnd="48dp"
+            app:layout_constraintStart_toEndOf="@+id/instagram_imageButton_huellitas" android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp" app:layout_constraintHorizontal_bias="0.571"/>
 
     <ImageButton
             android:scaleType="fitCenter"
-            android:layout_marginTop="58dp"
-            android:layout_marginRight="40dp"
+            android:layout_marginTop="56dp"
+            android:layout_marginRight="72dp"
             android:background="@color/grey"
-            android:src="@drawable/instagram_png12"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:id="@+id/instagram_imageButton"
             app:layout_constraintTop_toBottomOf="@id/textView"
             app:layout_constraintRight_toLeftOf="@+id/facebook_imageButton"
-            />
+    />
 
     <ImageButton
             android:scaleType="fitCenter"
@@ -58,7 +56,6 @@
             android:layout_marginRight="40dp"
             android:layout_marginLeft="20dp"
             android:background="@color/grey"
-            android:src="@drawable/instagram_png12"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:id="@+id/instagram_imageButton_huellitas"
@@ -66,18 +63,7 @@
             app:layout_constraintLeft_toRightOf="@+id/huella"
     />
 
-    <ImageButton
-            android:scaleType="fitCenter"
-            android:layout_marginTop="58dp"
-            android:layout_marginRight="40dp"
-            android:background="@color/grey"
-            android:src="@drawable/instagram_png12"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:id="@+id/instagram_huellitas"
-            app:layout_constraintTop_toBottomOf="@id/textView"
-            app:layout_constraintRight_toLeftOf="@+id/facebook_imageButton"
-    />
+
 
     <TextView
             android:text="Para conocer ofertas, eventos, nuevos productos, ser paseador o publicar perritos, siguenos en nuestras redes sociales escríbenos a:
@@ -107,16 +93,15 @@
             app:layout_constraintHorizontal_bias="0.207"
             app:layout_constraintVertical_bias="1.0"/>
 
-        <de.hdodenhof.circleimageview.CircleImageView
+    <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/huella"
             app:layout_constraintTop_toBottomOf="@+id/instagram_imageButton"
             android:layout_width="150dp"
             android:layout_height="150dp"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginTop="80dp"
-            android:layout_marginLeft="30dp"
-            android:src="@drawable/huellitas"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="8dp"
 
     />
 
@@ -130,7 +115,7 @@ Coahuila (448,02 km)
             android:textColor="@color/white"
             app:layout_constraintLeft_toRightOf="@+id/huella"
             app:layout_constraintTop_toTopOf="@+id/huella"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="20dp"
             android:layout_width="175dp"
             android:layout_height="wrap_content"/>
 </android.support.constraint.ConstraintLayout>

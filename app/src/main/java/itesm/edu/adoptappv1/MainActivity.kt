@@ -2,8 +2,6 @@ package itesm.edu.adoptappv1
 
 import android.content.Intent
 import itesm.edu.adoptappv1.model.Adoptar.Adoptar_Fragment
-import itesm.edu.adoptappv1.Donar
-import itesm.edu.adoptappv1.model.Carrito.CarritoActivity
 import itesm.edu.adoptappv1.model.Carrito.envio
 import itesm.edu.adoptappv1.model.Comida.Comida_Fragment
 import itesm.edu.adoptappv1.model.Contacto.Informacion_Fragment
@@ -28,7 +26,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.DatabaseReference
-import itesm.edu.adoptappv1.R
+import itesm.edu.adoptappv1.model.Carrito.CarritoFragment
 
 
 class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatActivity() {
@@ -84,8 +82,11 @@ class MainActivity : NavigationView.OnNavigationItemSelectedListener, AppCompatA
 
             R.id.layout_tienda -> {
                 drawer.closeDrawers()
+                val donarFragment = CarritoFragment.newInstance()
+                supportFragmentManager.beginTransaction().replace(R.id.fragment_container, donarFragment).commit();
+
                 Toast.makeText(this, "Checkout", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this, CarritoActivity::class.java))
+                //startActivity(Intent(this, CarritoActivity::class.java))
                 return true
             }
 
